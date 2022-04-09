@@ -1,0 +1,254 @@
+@import '../mixins.scss';
+@import '../common.scss';
+
+.wrapper {
+  min-width: 894px;
+
+  margin-bottom: 20px;
+  border: 1px solid #dfe5eb;
+
+  &.compact {
+    min-width: auto;
+    width: 100%;
+    border: 0;
+  }
+}
+
+.header {
+  @extend .commonText;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .compact & {
+    height: 3em;
+    border: 0;
+    padding: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+}
+
+.headerControl {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+
+  // Hide toggles on compact mode
+  .compact & {
+    display: none;
+  }
+}
+
+.controlButtons {
+  display: flex;
+  align-items: center;
+}
+
+.liveExampleWrapper {
+  display: flex;
+  border: 1px solid #e5e5e5;
+
+  // Stack on top when in compact mode
+  .compact & {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+}
+
+.editor,
+.preview {
+  box-sizing: border-box;
+  width: 50%;
+  position: relative;
+
+  // Take all width in compact mode
+  .compact & {
+    width: 100%;
+  }
+}
+
+.editor {
+  border-right: 1px solid #dfe5eb;
+  background-color: #f8fafb;
+
+  .compact & {
+    border-right: 0;
+  }
+}
+
+.editorView {
+  padding: 20px;
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+  outline: 0;
+  font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono',
+    'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
+    'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
+    'Courier New', Courier, monospace;
+
+  // Auto height when in compact mode
+  .compact & {
+    min-height: auto;
+    height: auto;
+  }
+
+  // Theme extracted from
+  // https://github.com/PrismJS/prism-themes/blob/master/themes/prism-base16-ateliersulphurpool.light.css
+  :global {
+    pre[class*='language-'] {
+      margin: 0.5em 0;
+      overflow: auto;
+    }
+
+    /* Inline code */
+    :not(pre) > code[class*='language-'] {
+      padding: 0.1em;
+      border-radius: 0.3em;
+    }
+
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+      color: #898ea4;
+    }
+
+    .token.punctuation {
+      color: #5e6687;
+    }
+
+    .token.namespace {
+      opacity: 0.7;
+    }
+
+    .token.operator,
+    .token.boolean,
+    .token.number {
+      color: #c76b29;
+    }
+
+    .token.property {
+      color: #c08b30;
+    }
+
+    .token.tag {
+      color: #3d8fd1;
+    }
+
+    .token.string {
+      color: #22a2c9;
+    }
+
+    .token.selector {
+      color: #6679cc;
+    }
+
+    .token.attr-name {
+      color: #c76b29;
+    }
+
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string {
+      color: #22a2c9;
+    }
+
+    .token.attr-value,
+    .token.keyword,
+    .token.control,
+    .token.directive,
+    .token.unit {
+      color: #ac9739;
+    }
+
+    .token.statement,
+    .token.regex,
+    .token.atrule {
+      color: #22a2c9;
+    }
+
+    .token.placeholder,
+    .token.variable {
+      color: #3d8fd1;
+    }
+
+    .token.deleted {
+      text-decoration: line-through;
+    }
+
+    .token.inserted {
+      border-bottom: 1px dotted #202746;
+      text-decoration: none;
+    }
+
+    .token.italic {
+      font-style: italic;
+    }
+
+    .token.important,
+    .token.bold {
+      font-weight: bold;
+    }
+
+    .token.important {
+      color: #c94922;
+    }
+
+    .token.entity {
+      cursor: help;
+    }
+  }
+}
+
+.preview {
+  padding: 30px 20px;
+  @include checkerboard(20px, #eff2f6, #fff);
+
+  &.darkPreview {
+    @include checkerboard(20px, #5b7fa4, #486684);
+  }
+
+  &.compactPreview {
+    background: #f0f4f7;
+  }
+
+  &.compactPreview.darkPreview {
+    background: #5b7fa4;
+  }
+}
+
+.error {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ff5555;
+  color: #ffffff;
+  padding: 10px;
+  white-space: pre;
+
+  .compact & {
+    overflow: auto;
+  }
+}
+
+/* 
+  Preview examples in row. Make sure to wrap your
+  components in a div.
+*/
+
+.previewRow div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.previewRow div :nth-of-type(2n) {
+  margin: 0 10px;
+}

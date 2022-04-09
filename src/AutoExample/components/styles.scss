@@ -1,0 +1,55 @@
+@import '../../mixins.scss';
+@import '../../common.scss';
+
+.wrapper {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.option {
+  align-items: center;
+  padding: 15px;
+
+  &:nth-child(2n + 1) {
+    background-color: #f6f8fa;
+  }
+
+  :global {
+    .markdown-body p {
+      margin: 0;
+    }
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #cbccce;
+}
+
+.previewControls {
+  margin-left: auto;
+}
+
+.previewControl {
+  @extend .commonText;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview {
+  padding: 60px 20px;
+
+  border: 1px solid #dee6ed;
+  box-shadow: 0 0 10px 2px #e5ebf1 inset;
+
+  @include checkerboard(20px, #eff2f6, #fff);
+
+  &.darkPreview {
+    @include checkerboard(20px, #5b7fa4, #486684);
+    box-shadow: 0 0 10px 2px #486684 inset;
+  }
+}
