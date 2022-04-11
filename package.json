@@ -1,6 +1,6 @@
 {
   "name": "zzl-wix-storybook-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utilities for automated component documentation within Storybook",
   "author": {
     "name": "Wix",

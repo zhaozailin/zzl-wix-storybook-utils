@@ -40,7 +40,7 @@ export default class CodeExample extends Component {
       <div>
         <div className={styles.panelControl} style={{ display: 'flex' }}>
           <h2>{this.props.title}</h2>
-          <div style={{ margin: '22px 24px 0' }}>
+          <div style={{ margin: '5px 0 0 7px' }}>
             <TextButton onClick={this.toggleCode}>
               {this.state.isOpened ? 'Hide' : 'Show'} code
             </TextButton>
